@@ -4,7 +4,7 @@
 		$_SESSION[getImageHolder()] = "";
 		setImageHolder($_GET['image_holder']);
 		
-	}else{ echo $_GET['image_holder'] = getImageHolder(); }
+	}else{ $_GET['image_holder'] = getImageHolder(); }
 		
 	if(session_status()==1){session_start();}
 	
@@ -25,7 +25,14 @@
 			
 			$_SESSION[getImageHolder()] = $old_images.",".$destination;
 			
-			echo "<hr />".$_SESSION[getImageHolder()]."<hr />";
+			$images = $_SESSION[getImageHolder()];
+			$uris = explode(",", $images);
+			
+			echo "<hr />";
+			for($i = 1;$i<count($uris);$i++){
+				echo '<img src="'.$uris[$i].'" style="width:50px; height:50px;"/>';
+			}
+			echo "<hr />";
 		}
 	}
 	
