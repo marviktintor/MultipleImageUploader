@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="upload_images();">Upload Images</button>
+</body>
+
+<script type="text/javascript">
+
+
+function generateKeys() {
+	var temp = '';
+	var keylist = "?!@#$%^&*()abcdefghijklmnopqrstuvwxyz123456789";
+	temp = '';
+
+	for (i = 0; i < 7; i++) {
+		temp += keylist.charAt(Math.floor(Math.random() * keylist.length));
+	}
+
+	return temp;
+}
+
+function upload_images(){
+	var session_id = generateKeys();
+	window.open("upload.php?image_holder="+session_id,"_blank","height=100;width=50");
+}
+</script>
+</html>
